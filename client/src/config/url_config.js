@@ -5,4 +5,4 @@ export const GET_POSTS_URL = '/api/posts';
 export const LOGOUT_REDIRECT_URL = '/api/logout';
 export const NEW_POST_URL = '/api/new';
 export const EDIT_POST_URL = '/api/edit/';
-export const APP_URL = 'https://pet-work.herokuapp.com/';
+export const APP_URL = 'https://pet-work.herokuapp.com';
