@@ -50,10 +50,6 @@ app.use(
 	})
 );
 
-// app.get('/', (req, res) => {
-// 	res.send('Working!');
-// });
-
 app.get('/api/loggedState', cors(), (req, res) => {
 	const isLogged = req.isAuthenticated();
 	console.log('Checking if user is Logged...');
@@ -89,7 +85,7 @@ app.post('/api/new', cors(), async (req, res) => {
 			hire_redirect: hire_redirect || DEFAULT_REDIRECT,
 		};
 		await Post.create(write);
-		// res.redirect(HOMEPAGE); hacerlo desde react
+		res.redirect(HOMEPAGE);
 	} catch (error) {
 		console.error(error);
 	}
@@ -97,7 +93,7 @@ app.post('/api/new', cors(), async (req, res) => {
 
 app.get('/api/logout', (req, res) => {
 	req.logout();
-	// res.redirect(HOMEPAGE); hacerlo desde react
+	res.redirect(HOMEPAGE);
 });
 
 app.get('/api/login', (req, res) => {
@@ -136,7 +132,7 @@ app.delete('/api/edit/:id', async (req, res) => {
 
 	const post = await Post.findOneAndDelete(filter);
 	console.log(post);
-	// res.redirect(HOMEPAGE); hacerlo desde react
+	res.redirect(HOMEPAGE);
 });
 
 app.get('*', (req, res) => {

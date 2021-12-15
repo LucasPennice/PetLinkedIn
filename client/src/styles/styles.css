@@ -582,22 +582,22 @@ nav .user_icon:hover {
 }
 
 .form_container .delete_container .confirm_delete a {
-  border: 2px solid #ed254e;
-  color: #ed254e;
-}
-
-.form_container .delete_container .confirm_delete a:hover {
-  background-color: #ed254e;
-  color: white;
-}
-
-.form_container .delete_container .confirm_delete button {
   border: 2px solid #c2eabd;
   color: #c2eabd;
 }
 
-.form_container .delete_container .confirm_delete button:hover {
+.form_container .delete_container .confirm_delete a:hover {
   background-color: #c2eabd;
+  color: white;
+}
+
+.form_container .delete_container .confirm_delete button {
+  border: 2px solid #ed254e;
+  color: #ed254e;
+}
+
+.form_container .delete_container .confirm_delete button:hover {
+  background-color: #ed254e;
   color: white;
 }
 
