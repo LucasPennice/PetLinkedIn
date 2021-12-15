@@ -11,6 +11,44 @@ const {
 } = process.env;
 
 module.exports = (app) => {
+	// passport.use(
+	// 	new GoogleStrategy(
+	// 		{
+	// 			clientID:
+	// 				'1023148491900-2msh80u955k6bq82nnafep35517amhv8.apps.googleusercontent.com',
+	// 			clientSecret: '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',
+	// 			callbackURL: 'https://pet-work.herokuapp.com/auth/google/callback',
+	// 		},
+	// 		async (accessToken, refreshToken, profile, done) => {
+	// 			const { id, displayName, name, photos } = profile;
+	// 			const { givenName, familyName } = name;
+	// 			const newUser = {
+	// 				googleId: id,
+	// 				fullName: displayName,
+	// 				firstName: givenName,
+	// 				lastName: familyName,
+	// 				imageUrl: photos[0].value,
+	// 			};
+
+	// 			try {
+	// 				let user = await User.findOne({ googleId: profile.id });
+
+	// 				if (user) {
+	// 					return done(null, user);
+	// 				} else {
+	// 					user = await User.create(newUser);
+	// 					return done(null, user);
+	// 				}
+	// 			} catch (error) {
+	// 				console.log(error);
+	// 			}
+	// 			// User.findOrCreate({ googleId: profile.id }, (err, user) => {
+	// 			// 	return done(err, user);
+	// 			// });
+	// 		}
+	// 	)
+	// );
+
 	passport.use(
 		new GoogleStrategy(
 			{
@@ -19,42 +57,20 @@ module.exports = (app) => {
 				clientSecret: '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',
 				callbackURL: 'https://pet-work.herokuapp.com/auth/google/callback',
 			},
-			async (accessToken, refreshToken, profile, done) => {
-				const { id, displayName, name, photos } = profile;
-				const { givenName, familyName } = name;
-				const newUser = {
-					googleId: id,
-					fullName: displayName,
-					firstName: givenName,
-					lastName: familyName,
-					imageUrl: photos[0].value,
-				};
-
-				try {
-					let user = await User.findOne({ googleId: profile.id });
-
-					if (user) {
-						return done(null, user);
-					} else {
-						user = await User.create(newUser);
-						return done(null, user);
-					}
-				} catch (error) {
-					console.log(error);
-				}
-				// User.findOrCreate({ googleId: profile.id }, (err, user) => {
-				// 	return done(err, user);
-				// });
+			function (token, tokenSecret, profile, done) {
+				User.findOrCreate({ googleId: profile.id }, function (err, user) {
+					return done(err, user);
+				});
 			}
 		)
 	);
 
-	passport.serializeUser((user, done) => {
+	passport.serializeUser(function (user, done) {
 		done(null, user.id);
 	});
 
-	passport.deserializeUser((id, done) => {
-		User.findById(id, (err, user) => {
+	passport.deserializeUser(function (id, done) {
+		User.findById(id, function (err, user) {
 			done(err, user);
 		});
 	});
@@ -68,10 +84,8 @@ module.exports = (app) => {
 
 	app.get(
 		'/auth/google/callback',
-		passport.authenticate('google', {
-			failureRedirect: '/login',
-		}),
-		(req, res) => {
+		passport.authenticate('google', { failureRedirect: '/login' }),
+		function (req, res) {
 			res.redirect('/');
 		}
 	);
