@@ -17,7 +17,7 @@ module.exports = (app) => {
 				clientID:
 					'1023148491900-2msh80u955k6bq82nnafep35517amhv8.apps.googleusercontent.com',
 				clientSecret: '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',
-				callbackURL: '/auth/google/callback',
+				callbackURL: 'https://pet-work.herokuapp.com/auth/google/callback',
 			},
 			async (accessToken, refreshToken, profile, done) => {
 				const { id, displayName, name, photos } = profile;
