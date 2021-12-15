@@ -13,8 +13,8 @@
 		"USER_INFO_URL": "/api/userInfo",
 		"GET_POSTS_URL": "/api/posts",
 		"LOGOUT_REDIRECT_URL": "http://localhost:5000/api/logout",
-		"NEW_POST_URL": "/api/new",
-		"EDIT_POST_URL": "/api/edit"
+		"NEW_POST_URL": "/api/new/",
+		"EDIT_POST_URL": "/api/edit/"
 	},
 	"production": {
 		"GOOGLE_CALLBACK_URL": "https://pet-work.herokuapp.com/auth/google/callback",
@@ -29,7 +29,7 @@
 		"USER_INFO_URL": "/api/userInfo",
 		"GET_POSTS_URL": "/api/posts",
 		"LOGOUT_REDIRECT_URL": "https://pet-work.herokuapp.com/api/logout",
-		"NEW_POST_URL": "/api/new",
-		"EDIT_POST_URL": "/api/edit"
+		"NEW_POST_URL": "/api/new/",
+		"EDIT_POST_URL": "/api/edit/"
 	}
 }
