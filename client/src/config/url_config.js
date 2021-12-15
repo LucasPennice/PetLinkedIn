@@ -1,4 +1,4 @@
-export const LOGIN_REDIRECT_URL = '/api/login';
+export const LOGIN_REDIRECT_URL = '/auth/google';
 export const LOGGED_STATE_URL = '/api/loggedState';
 export const USER_INFO_URL = '/api/userInfo';
 export const GET_POSTS_URL = '/api/posts';

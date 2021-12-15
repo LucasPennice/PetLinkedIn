@@ -96,9 +96,9 @@ app.get('/api/logout', (req, res) => {
 	res.redirect(HOMEPAGE);
 });
 
-app.get('/api/login', (req, res) => {
-	res.redirect('/auth/google');
-});
+// app.get('/api/login', (req, res) => {
+// 	res.redirect('/auth/google');
+// });
 
 app.use(methodOverride('_method'));
 
