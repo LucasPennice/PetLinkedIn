@@ -1,9 +1,12 @@
 import RenderWorkCard from '../components/RenderWorkCard';
 
 export const addHttpsToUrl = (url) => {
-	if (!url.includes('www.')) {
-		return 'https://www.'.concat(url);
-	}
+	let newUrl = '';
+	newUrl = url.replace('https://', '');
+	newUrl = newUrl.replace('www.', '');
+	newUrl = 'https://www.'.concat(newUrl);
+
+	return newUrl;
 };
 
 export const renderPetCards = (
@@ -23,8 +26,8 @@ export const renderPetCards = (
 			_id,
 		} = pet;
 		const renderCondition = renderAll === 'own' ? created_by === userId : true;
+		hire_redirect = addHttpsToUrl(hire_redirect);
 		console.log(hire_redirect);
-		// hire_redirect = addHttpsToUrl(hire_redirect);
 
 		if (renderCondition) {
 			return (
