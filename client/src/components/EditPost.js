@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { EDIT_POST_URL } from '../config/url_config';
-import { ImCross } from 'react-icons/im';
-import { TiTick } from 'react-icons/ti';
 
 export default ({ userId, currentlyEditingPostData }) => {
 	let { hire_redirect, image_url, pet_name, service, price, _id } =
@@ -91,11 +89,9 @@ export default ({ userId, currentlyEditingPostData }) => {
 								setDeleteButtonClass('delete');
 							}}
 						>
-							<ImCross />
+							o
 						</a>
-						<button onClick={() => alert('the delete thing has been sent')}>
-							<TiTick />
-						</button>
+						<button>x</button>
 					</div>
 				</div>
 			</form>

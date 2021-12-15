@@ -126,7 +126,7 @@ app.put('/api/edit/:id', async (req, res) => {
 		});
 		console.log(modifiedPost);
 	}
-	// res.redirect(HOMEPAGE); hacerlo desde react
+	res.redirect(HOMEPAGE);
 });
 
 app.delete('/api/edit/:id', async (req, res) => {
