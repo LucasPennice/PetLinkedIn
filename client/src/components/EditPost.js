@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { EDIT_POST_URL } from '../config/url_config';
+// import { EDIT_POST_URL } from '../config/url_config';
 
 export default ({ userId, currentlyEditingPostData }) => {
+	//
+	const { NODE_ENV } = process.env;
+	const envJson = require('../config/env_variables.json');
+	const node_env = NODE_ENV || 'development';
+	const env_variables = envJson[node_env];
+	const { EDIT_POST_URL } = env_variables;
+	//
 	let { hire_redirect, image_url, pet_name, service, price, _id } =
 		currentlyEditingPostData;
 	const [newRedirect, setNewRedirect] = useState(hire_redirect);

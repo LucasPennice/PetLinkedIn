@@ -46,9 +46,13 @@ export default ({
 			) : (
 				<></>
 			)}
-			<a href={`${hire_redirect}`} className="card_hire" target="_blank">
-				Hire!
-			</a>
+			{created_by !== userId ? (
+				<a href={`${hire_redirect}`} className="card_hire" target="_blank">
+					Hire!
+				</a>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 };

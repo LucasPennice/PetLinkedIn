@@ -2,14 +2,11 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const mongoose = require('mongoose');
 const User = require('../models/User');
-const {
-	GOOGLE_CALLBACK_URL,
-	GOOGLE_CLIENT_ID,
-	GOOGLE_CLIENT_SECRET,
-	FAILURE_LINK,
-	HOMEPAGE,
-} = process.env;
-
+const { NODE_ENV } = process.env;
+const envJson = require('../config/env_variables.json');
+const node_env = NODE_ENV || 'development';
+const env_variables = envJson[node_env];
+const { GOOGLE_CALLBACK_URL, HOMEPAGE, LOGIN_REDIRECT_URL } = env_variables;
 module.exports = (app) => {
 	passport.use(
 		new GoogleStrategy(
@@ -17,7 +14,7 @@ module.exports = (app) => {
 				clientID:
 					'1023148491900-2msh80u955k6bq82nnafep35517amhv8.apps.googleusercontent.com',
 				clientSecret: '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',
-				callbackURL: 'https://pet-work.herokuapp.com/auth/google/callback',
+				callbackURL: GOOGLE_CALLBACK_URL,
 			},
 			async (accessToken, refreshToken, profile, done) => {
 				const { id, displayName, name, photos } = profile;
@@ -77,9 +74,9 @@ module.exports = (app) => {
 
 	app.get(
 		'/auth/google/callback',
-		passport.authenticate('google', { failureRedirect: '/login' }),
+		passport.authenticate('google', { failureRedirect: LOGIN_REDIRECT_URL }),
 		function (req, res) {
-			res.redirect('/');
+			res.redirect(HOMEPAGE);
 		}
 	);
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const morgan = require('morgan');
+// const mongoose = require('mongoose');
+// const morgan = require('morgan');
 const connectDB = require('./config/db');
 const passport = require('passport');
 const session = require('express-session');
@@ -10,10 +10,14 @@ dotenv.config({ path: './config/config.env' });
 const cors = require('cors');
 const Post = require('./models/Post');
 const methodOverride = require('method-override');
-const { response } = require('express');
-const { HOMEPAGE, NODE_ENV, MONGO_URI, DEFAULT_IMAGE, DEFAULT_REDIRECT } =
-	process.env;
 const path = require('path');
+// const { response } = require('express');
+const { NODE_ENV } = process.env;
+const envJson = require('./config/env_variables.json');
+const node_env = NODE_ENV || 'development';
+const env_variables = envJson[node_env];
+const { PORT, HOMEPAGE, MONGO_URI, DEFAULT_IMAGE, DEFAULT_REDIRECT } =
+	env_variables;
 
 connectDB();
 const app = express();
@@ -139,6 +143,6 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || PORT;
 
-app.listen(port, console.log(`Server running in ${NODE_ENV} on port ${port}`));
+app.listen(port, console.log(`Server running in ${node_env} on port ${port}`));
