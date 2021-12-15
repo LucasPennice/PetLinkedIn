@@ -46,12 +46,7 @@ export default ({
 			) : (
 				<></>
 			)}
-			<a
-				href={hire_redirect}
-				className="card_hire"
-				target="_blank"
-				rel="noreferrer"
-			>
+			<a href={`${hire_redirect}`} className="card_hire" target="_blank">
 				Hire!
 			</a>
 		</div>

@@ -20,7 +20,7 @@ export default ({ userId, currentlyEditingPostData }) => {
 				method="POST"
 				action={`${EDIT_POST_URL}${_id}?_method=PUT`}
 			>
-				<label htmlFor="pet_name">Pet Name</label>
+				<label htmlFor="pet_name">Pet Name *</label>
 				<input
 					type="text"
 					id="pet_name"
@@ -29,7 +29,7 @@ export default ({ userId, currentlyEditingPostData }) => {
 					value={newPetName}
 					onChange={(e) => setNewPetName(e.target.value)}
 				/>
-				<label htmlFor="pet_service">Service</label>
+				<label htmlFor="pet_service">Service *</label>
 				<input
 					type="text"
 					id="pet_service"
@@ -38,7 +38,7 @@ export default ({ userId, currentlyEditingPostData }) => {
 					value={newService}
 					onChange={(e) => setNewService(e.target.value)}
 				/>
-				<label htmlFor="pet_price">Price</label>
+				<label htmlFor="pet_price">Price *</label>
 				<input
 					type="number"
 					id="pet_price"
@@ -49,17 +49,19 @@ export default ({ userId, currentlyEditingPostData }) => {
 					value={newPrice}
 					onChange={(e) => setNewPrice(e.target.value)}
 				/>
-				<label htmlFor="image_url">Pet Pic</label>
+				<label htmlFor="image_url">Selfie URL</label>
 				<input
 					type="text"
 					name="image_url"
+					id="image_url"
 					value={newImage}
 					onChange={(e) => setNewImage(e.target.value)}
 				/>
-				<label htmlFor="hire_redirect">Pet Page</label>
+				<label htmlFor="hire_redirect">Social Media URL</label>
 				<input
 					type="text"
 					name="hire_redirect"
+					id="hire_redirect"
 					value={newRedirect}
 					onChange={(e) => setNewRedirect(e.target.value)}
 				/>
