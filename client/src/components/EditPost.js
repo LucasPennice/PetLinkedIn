@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { EDIT_POST_URL } from '../config/url_config';
+import { ImCross } from 'react-icons/im';
+import { TiTick } from 'react-icons/ti';
 
 export default ({ userId, currentlyEditingPostData }) => {
 	let { hire_redirect, image_url, pet_name, service, price, _id } =
@@ -64,7 +66,7 @@ export default ({ userId, currentlyEditingPostData }) => {
 					onChange={(e) => setNewRedirect(e.target.value)}
 				/>
 				<input type="hidden" defaultValue={userId} name="created_by" />
-				<button>Create Work</button>
+				<button>Edit Post</button>
 			</form>
 			<Link to="/" className="go_back">
 				Back
@@ -89,9 +91,11 @@ export default ({ userId, currentlyEditingPostData }) => {
 								setDeleteButtonClass('delete');
 							}}
 						>
-							No
+							<ImCross />
 						</a>
-						<button>Yes</button>
+						<button onClick={() => alert('the delete thing has been sent')}>
+							<TiTick />
+						</button>
 					</div>
 				</div>
 			</form>
