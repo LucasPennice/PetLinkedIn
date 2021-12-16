@@ -31,10 +31,10 @@ module.exports = (app) => {
 					let user = await User.findOne({ googleId: profile.id });
 
 					if (user) {
-						return done(err, user);
+						return done(null, user);
 					} else {
 						user = await User.create(newUser);
-						return done(err, user);
+						return done(null, user);
 					}
 				} catch (error) {
 					console.log(error);
