@@ -35,7 +35,7 @@ export default ({
 			{created_by === userId ? (
 				<Link
 					onClick={() => {
-						console.log(pet);
+						// console.log(pet);
 						setCurrentlyEditingPostData(pet);
 					}}
 					to={`/edit/${_id}`}

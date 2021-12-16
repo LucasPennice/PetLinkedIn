@@ -27,7 +27,7 @@ export const renderPetCards = (
 		} = pet;
 		const renderCondition = renderAll === 'own' ? created_by === userId : true;
 		hire_redirect = addHttpsToUrl(hire_redirect);
-		console.log(hire_redirect);
+		// console.log(hire_redirect);
 
 		if (renderCondition) {
 			return (

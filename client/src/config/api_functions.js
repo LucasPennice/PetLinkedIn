@@ -4,7 +4,7 @@ export const getLogInState = async (saveIsUserLogged) => {
 		.then((res) => res.json())
 		.then((userInfo) => {
 			saveIsUserLogged(userInfo);
-			console.log(userInfo);
+			// console.log(userInfo);
 		});
 };
 
@@ -13,7 +13,7 @@ export const getUserInfo = async (saveUserInfo) => {
 		.then((res) => res.json())
 		.then((userInfo) => {
 			saveUserInfo(userInfo);
-			console.log(userInfo);
+			// console.log(userInfo);
 		});
 };
 
@@ -22,6 +22,6 @@ export const fetchWorkPosts = async (savePostsArray) => {
 		.then((res) => res.json())
 		.then((posts) => {
 			savePostsArray(posts);
-			console.log(posts);
+			// console.log(posts);
 		});
 };

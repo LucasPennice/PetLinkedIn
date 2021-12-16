@@ -28,24 +28,7 @@ function App() {
 	const envJson = require('./config/env_variables.json');
 	const node_env = NODE_ENV || 'development';
 	const env_variables = envJson[node_env];
-	const {
-		PORT,
-		GOOGLE_CALLBACK_ID,
-		LOGIN_REDIRECT_ID,
-		HOMEPAGE,
-		MONGO_URI,
-		GOOGLE_CLIENT_ID,
-		GOOGLE_CLIENT_SECRET,
-		DEFAULT_IMAGE,
-		DEFAULT_REDIRECT,
-		LOGGED_STATE_URL,
-		USER_INFO_URL,
-		GET_POSTS_URL,
-		LOGOUT_REDIRECT_URL,
-		NEW_POST_URL,
-		EDIT_POST_URL,
-	} = env_variables;
-	console.log(node_env);
+	const { LOGOUT_REDIRECT_URL } = env_variables;
 	//
 
 	useEffect(() => {
