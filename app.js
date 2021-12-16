@@ -1,7 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-// const mongoose = require('mongoose');
-// const morgan = require('morgan');
 const connectDB = require('./config/db');
 const passport = require('passport');
 const session = require('express-session');
@@ -11,7 +9,6 @@ const cors = require('cors');
 const Post = require('./models/Post');
 const methodOverride = require('method-override');
 const path = require('path');
-// const { response } = require('express');
 const { NODE_ENV } = process.env;
 const envJson = require('./config/env_variables.json');
 const node_env = NODE_ENV || 'development';
@@ -99,10 +96,6 @@ app.get('/api/logout', (req, res) => {
 	req.logout();
 	res.redirect(HOMEPAGE);
 });
-
-// app.get('/api/login', (req, res) => {
-// 	res.redirect('/auth/google');
-// });
 
 app.use(methodOverride('_method'));
 
