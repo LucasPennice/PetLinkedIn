@@ -54,8 +54,12 @@ function App() {
 				<>
 					<NavBar userIcon={userInfo.imageUrl} openMenu={openMenu} />
 					<div className={menuClass}>
-						<Link to={`/myposts/${userInfo.googleId}`}>MY POSTS</Link>
-						<Link to={`/`}>HOME</Link>
+						<Link to={`/myposts/${userInfo.googleId}`} onClick={openMenu}>
+							MY POSTS
+						</Link>
+						<Link to={`/`} onClick={openMenu}>
+							HOME
+						</Link>
 						<a href={LOGOUT_REDIRECT_URL}>LOGOUT</a>
 					</div>
 					<Routes>
